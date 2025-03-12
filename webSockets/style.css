@@ -1,0 +1,49 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full height of the viewport */
+    margin: 0;
+
+}
+
+canvas {
+    border: 2px solid black;
+}
+
+.dot{
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin: 50px auto;/*centers the circle horizontally*/
+
+    position: absolute;
+    animation-duration: 1s;
+    
+
+}
+
+.circle {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: coral;
+  position: absolute;
+  top: 550px;
+  left: 600px;
+  animation-name: rotatingMotion;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes rotatingMotion {
+  0% {
+    transform: translateX(0) rotate(0deg);
+  }
+  50% {
+    transform: translateX(200px) translateY(200px) rotate(540deg);
+  }
+  100% {
+    transform: translateX(0) rotate(0deg);
+  }
+}

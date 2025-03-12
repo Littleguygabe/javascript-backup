@@ -1,0 +1,62 @@
+/*transitions wait until a change in a property then allows those changes to take place over time
+    so basically for smoothing out dynamic reactions within the website*/
+
+/*animations run unconditionally and work on a frame by frame basis allowing for better control*/
+
+.btn{
+    font-size: 2rem;
+    font-weight: 700;
+    padding: 0.6em 0.3em;
+    color: rgb(40, 88, 247);
+    background-color: rgb(112, 186, 255);
+    border: 0px solid rgb(112, 186, 255);
+    border-radius: 5px;
+
+    position: absolute;
+    top: 550px;
+    left: 550px;
+
+    /*transition-property: transform; 
+    transition-duration: 0.3s;
+    transition-timing-function:ease ;
+    transition-delay: 0s;*/ /*this is the long form way of typing it out*/
+
+    /*transition: transform 0.3s ease 0s;*/ /*reads in properties in the same order as above ease and 0s is default so could remove*/
+    /*transition: transform 0.3s, background-colour 0.3s, color 0.3s;*/
+
+    /*the all keyword applies the transition effect to everything within the the event argument -- so hover*/
+    transition: all 0.3s;
+
+}
+
+.btn:hover{
+    transform: translateY(20px);
+    background-color: rgb(40, 88, 247);
+    color: rgb(112, 186, 255);
+}
+
+h1{
+    position: relative;
+    top: 150px;
+    left: 535px;
+}
+
+/*end of transitions*/
+@keyframes slideinleft {
+    from { /*beginning of the animation*/
+        transform: translateX(-300px);
+    }
+
+    to { /*end of the animation*/
+        transform: translateX(0px);
+    }
+}
+/*bad to call the element directly
+.heading1{
+    animation: slideinleft 1s ease-out none;
+}*/
+
+/*better to create a utility class for the animation*/
+.slideinleft{
+    animation: slideinleft 1s ease-out;
+}

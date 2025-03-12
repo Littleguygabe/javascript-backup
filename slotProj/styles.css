@@ -1,0 +1,27 @@
+#container {
+    width: 500px;
+    height: 500px;
+    position: relative;
+    border: 2px solid black;
+}
+
+#box1 {
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: left 0.1s ease, top 0.1s ease;
+}
+
+#box2 {
+    width: 20px;
+    height: 20px;
+    background-color: blue;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: left 0.1s ease, top 0.1s ease;
+}
+
