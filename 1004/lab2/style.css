@@ -1,3 +1,24 @@
-.block {
-    border: 1px solid red;
+.section {
+    background-color: rgb(68, 233, 68);
+    border: 3px solid red;
+    text-align: center;
+}
+
+
+
+.navbar {
+    background-color:limegreen;
+    padding: 1em 0;
+}
+
+.navList {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+}
+
+ul li a {
+    text-decoration: none;
+    color: black;
+    font-size: 2rem;
 }
