@@ -1,10 +1,15 @@
 .section {
     background-color: rgb(68, 233, 68);
-    border: 3px solid red;
     text-align: center;
+    padding: 10px;
 }
 
 
+.alignTextImage{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
 
 .navbar {
     background-color:limegreen;
@@ -21,4 +26,37 @@ ul li a {
     text-decoration: none;
     color: black;
     font-size: 2rem;
+}
+
+.redBorder{
+    border: solid red 1px;
+}
+
+#welcome-Section{
+    background-color: limegreen;
+    margin-right: 10px;
+}
+
+#favourite-photos{
+    padding: 10px;
+    background-color: limegreen;
+}
+
+#info-text{
+    justify-content: left;
+    padding: 10px;
+}
+
+#centerSection{
+    background-color:rgb(68, 233, 68) ;
+}
+
+.flex-container{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.removePadding{
+    padding: 0px;
 }
