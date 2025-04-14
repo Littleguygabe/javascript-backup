@@ -9,7 +9,7 @@ function getFormValue(){
         return 0;
     }
 
-    return selectedValue.value;   
+    return parseInt(selectedValue.value);
 }
 
 function getRandomNum(limit){
@@ -17,17 +17,24 @@ function getRandomNum(limit){
 }
 
 function replacePlaceHolders(){
-    insertXitems = ['Willy the Goblin', 'Big Daddy', 'Father Christmas']
-    insertYitems = ['the soup kitchen', 'Disneyland', 'the White House']
-    insertZitems = [ 'spontaneously combusted', 'melted into a puddle on the sidewalk', 'turned into a slug and crawled away']
+    insertXitems = ['Willy the Goblin', 'Big Daddy', 'Father Christmas'];
+    insertYitems = ['the soup kitchen', 'Disneyland', 'the White House'];
+    insertZitems = ['spontaneously combusted', 'melted into a puddle on the sidewalk', 'turned into a slug and crawled away'];
 
-    Xvalue = insertXitems[getRandomNum(3)];
+    let customName = document.getElementById('nameBox').value;
+    if (parseInt(customName.length) != 0){
+        Xvalue = customName;
+    }
+    else{
+        Xvalue = insertXitems[getRandomNum(3)];
+    }
+
     Yvalue = insertYitems[getRandomNum(3)];
     Zvalue = insertZitems[getRandomNum(3)];
 
-    return baseStory.replace(':insertx:', Xvalue)
-            .replace(':inserty:', Yvalue)
-            .replace(':insertz:', Zvalue);
+    return baseStory.replace(/:insertx:/g, Xvalue) // Use regex to replace all occurrences
+            .replace(/:inserty:/g, Yvalue) // Use regex to replace all occurrences
+            .replace(/:insertz:/g, Zvalue); // Use regex to replace all occurrences
 }
 
 function convertUnits(generatedStory){
@@ -36,13 +43,13 @@ function convertUnits(generatedStory){
 }
 
 function getStory(unitOption){  
-    if (unitOption===0){
+    if (unitOption === 0){
         return 'You need to select US or UK'
     }
 
-    let generatedStory = replacePlaceHolders()
-    if (unitOption===2){
-        generatedStory = convertUnits(generatedStory)
+    let generatedStory = replacePlaceHolders();
+    if (unitOption === 2){
+        generatedStory = convertUnits(generatedStory);
     }
 
     return generatedStory
@@ -52,6 +59,6 @@ genStoryBut.addEventListener('click',()=>{
     let unitOption = getFormValue();
     let story = getStory(unitOption);
 
-    console.log(story);
-
+    text = document.getElementById('story');
+    text.innerHTML = story;
 });
