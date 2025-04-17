@@ -1,0 +1,21 @@
+
+.flex-container{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+ul li ul{
+    display: flex;
+    gap: 10px;
+    
+}
+
+ul li{
+    list-style: none;
+    font-family: 'roboto',sans-serif;
+}
+
+#results{
+    display: flex;
+}

@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Your Name | Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="src.js"></script>
+
+</head>
+
+<body>
+
+    <!-- Custom Cursor -->
+
+    <div class="cursor-dot"></div>
+
+    <div class="cursor-outline"></div>
+
+
+
+    <!-- Navigation -->
+
+    <nav>
+
+        <div class="container nav-container">
+
+            <a href="#" class="logo">Gabriel<span>Bridger</span></a>
+
+            <div class="nav-links">
+
+                <a href="#home">Home</a>
+
+                <a href="#projects">Projects</a>
+
+                <a href="#about">About</a>
+
+                <a href="#contact">Contact</a>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- Hero Section -->
+
+    <section id="home" class="hero">
+
+        <div class="floating-elements">
+
+            <!-- Decorative elements for hero section -->
+
+            <div class="floating-element circle pulse" style="width: 300px; height: 300px; background: radial-gradient(circle, var(--accent-primary), transparent 70%); top: -100px; left: -100px; filter: blur(80px);"></div>
+
+            <div class="floating-element circle pulse" style="width: 400px; height: 400px; background: radial-gradient(circle, var(--accent-secondary), transparent 70%); bottom: -150px; right: -150px; filter: blur(80px);"></div>
+
+            
+
+            <div class="floating-element square parallax" data-speed="0.03" style="width: 20px; height: 20px; background-color: var(--accent-primary); top: 20%; left: 10%;"></div>
+
+            <div class="floating-element square parallax" data-speed="0.02" style="width: 15px; height: 15px; background-color: var(--accent-secondary); top: 30%; right: 20%;"></div>
+
+            <div class="floating-element circle parallax" data-speed="0.04" style="width: 25px; height: 25px; background-color: var(--accent-tertiary); bottom: 40%; left: 15%;"></div>
+
+            
+
+            <div class="floating-element ring parallax" data-speed="0.05" style="width: 60px; height: 60px; border-color: var(--accent-primary); top: 35%; right: 30%;"></div>
+
+            <div class="floating-element ring spin-slow" style="width: 100px; height: 100px; border-color: var(--accent-secondary); bottom: 25%; left: 25%;"></div>
+
+            
+
+            <div class="floating-element dot-grid parallax" data-speed="0.01" style="top: 15%; right: 5%;"></div>
+
+            <div class="floating-element dot-grid parallax" data-speed="0.02" style="bottom: 10%; left: 5%;"></div>
+
+            
+
+            <div class="tech-highlight float" style="top: 20%; right: 15%;">Python</div>
+
+            <div class="tech-highlight float" style="bottom: 25%; left: 20%;">SQL</div>
+
+            <div class="tech-highlight float" style="top: 70%; right: 25%;">Data Science</div>
+
+            <div class="tech-highlight float" style="top: 30%; right: 60%;">C</div>
+
+            <div class="tech-highlight float" style="top: 15%; right: 80%;">Haskell</div>
+
+
+
+        </div>
+
+        
+
+        <div class="container">
+
+            <div class="hero-content parallax" data-speed="0.2">
+
+                <h1 class="hero-title">Hi, I'm <span>Gabriel Bridger</span></h1>
+
+                <p class="hero-subtitle"></p>
+
+                <p>Building elegant solutions with Python and web technologies. Currently studying at University of Nottingham.</p>
+
+                <a href="#projects" class="hero-cta">View My Work</a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- Section Divider -->
+
+    <div class="section-divider">
+
+        <div class="divider-wave"></div>
+
+    </div>
+
+
+
+    <!-- Projects Section -->
+
+    <section id="projects">
+
+        <div class="floating-elements">
+
+            <!-- Decorative elements for projects section -->
+
+            <div class="floating-element circle" style="width: 200px; height: 200px; background: radial-gradient(circle, var(--accent-tertiary), transparent 70%); top: 30%; left: -5%; filter: blur(60px); opacity: 0.4;"></div>
+
+            
+
+            <div class="floating-element square parallax" data-speed="0.02" style="width: 15px; height: 15px; background-color: var(--accent-primary); top: 10%; right: 10%;"></div>
+
+            <div class="floating-element circle parallax" data-speed="0.03" style="width: 20px; height: 20px; background-color: var(--accent-secondary); bottom: 20%; left: 5%;"></div>
+
+            
+
+            <div class="floating-element ring spin-slow" style="width: 80px; height: 80px; border-color: var(--accent-primary); top: 40%; right: 5%;"></div>
+
+            
+
+            <div class="floating-element dot-grid parallax" data-speed="0.01" style="top: 50%; right: 15%;"></div>
+
+            
+
+            <div class="glass-card parallax" data-speed="0.04" style="width: 150px; height: 100px; top: 15%; left: 50%; opacity: 0.5;"></div>
+
+            <div class="glass-card parallax" data-speed="0.03" style="width: 120px; height: 80px; bottom: 25%; right: 30%; opacity: 0.5;"></div>
+
+        </div>
+
+        
+
+        <div class="container">
+
+            <h2 class="section-title parallax" data-speed="0.1">My Projects</h2>
+
+            <div class="projects-grid">
+
+                <!-- Project 1 -->
+
+                <div class="project-card parallax" data-speed="0.05">
+
+                    <div class="project-img">
+
+                        <img src="/api/placeholder/400/320" alt="Project 1">
+
+                    </div>
+
+                    <div class="project-content">
+
+                        <h3 class="project-title">Data Analysis Tool</h3>
+
+                        <p class="project-description">A Python application for analyzing and visualizing complex datasets.</p>
+
+                        <div class="project-tags">
+
+                            <span class="project-tag">Python</span>
+
+                            <span class="project-tag">Pandas</span>
+
+                            <span class="project-tag">Matplotlib</span>
+
+                        </div>
+
+                        <div class="project-links">
+
+                            <a href="#" class="project-link primary-link">Demo</a>
+
+                            <a href="#" class="project-link secondary-link">GitHub</a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                
+
+                <!-- Project 2 -->
+
+                <div class="project-card parallax" data-speed="0.07">
+
+                    <div class="project-img">
+
+                        <img src="/api/placeholder/400/320" alt="Project 2">
+
+                    </div>
+
+                    <div class="project-content">
+
+                        <h3 class="project-title">Machine Learning Model</h3>
+
+                        <p class="project-description">A classification model that predicts customer behavior based on historical data.</p>
+
+                        <div class="project-tags">
+
+                            <span class="project-tag">Python</span>
+
+                            <span class="project-tag">Scikit-learn</span>
+
+                            <span class="project-tag">TensorFlow</span>
+
+                        </div>
+
+                        <div class="project-links">
+
+                            <a href="#" class="project-link primary-link">Demo</a>
+
+                            <a href="#" class="project-link secondary-link">GitHub</a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                
+
+                <!-- Project 3 -->
+
+                <div class="project-card parallax" data-speed="0.06">
+
+                    <div class="project-img">
+
+                        <img src="/api/placeholder/400/320" alt="Project 3">
+
+                    </div>
+
+                    <div class="project-content">
+
+                        <h3 class="project-title">Web Scraping Tool</h3>
+
+                        <p class="project-description">A Python script that collects and analyzes data from various websites.</p>
+
+                        <div class="project-tags">
+
+                            <span class="project-tag">Python</span>
+
+                            <span class="project-tag">BeautifulSoup</span>
+
+                            <span class="project-tag">Requests</span>
+
+                        </div>
+
+                        <div class="project-links">
+
+                            <a href="#" class="project-link primary-link">Demo</a>
+
+                            <a href="#" class="project-link secondary-link">GitHub</a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- Section Divider -->
+
+    <div class="section-divider">
+
+        <div class="divider-wave"></div>
+
+    </div>
+
+
+
+    <!-- About Section -->
+
+    <section id="about">
+
+        <div class="floating-elements">
+
+            <!-- Decorative elements for about section -->
+
+            <div class="floating-element circle" style="width: 250px; height: 250px; background: radial-gradient(circle, var(--accent-primary), transparent 70%); bottom: 10%; right: -5%; filter: blur(70px); opacity: 0.4;"></div>
+
+            
+
+            <div class="floating-element square parallax" data-speed="0.03" style="width: 15px; height: 15px; background-color: var(--accent-tertiary); top: 15%; left: 15%;"></div>
+
+            <div class="floating-element circle parallax" data-speed="0.02" style="width: 22px; height: 22px; background-color: var(--accent-secondary); bottom: 25%; right: 10%;"></div>
+
+            
+
+            <div class="floating-element ring parallax" data-speed="0.04" style="width: 70px; height: 70px; border-color: var(--accent-primary); top: 20%; right: 20%;"></div>
+
+            
+
+            <div class="floating-element dot-grid parallax" data-speed="0.01" style="bottom: 40%; left: 10%;"></div>
+
+            
+
+            <div class="glass-card parallax" data-speed="0.05" style="width: 140px; height: 90px; top: 35%; right: 40%; opacity: 0.5;"></div>
+
+        </div>
+
+        
+
+        <div class="container">
+
+            <div class="about-grid">
+
+                <div class="about-img gradient-border glow parallax" data-speed="0.08">
+
+                    <img src="/api/placeholder/400/400" alt="Your Name">
+
+                </div>
+
+                <div class="about-content parallax" data-speed="0.04">
+
+                    <h2 class="section-title">About Me</h2>
+
+                    <p>Hello! I'm a first-year Computer Science student at [Your University]. My passion for programming started when I was in high school, and I've been developing my skills ever since.</p>
+
+                    <p>I'm particularly interested in data science, machine learning, and web development. My goal is to build applications that not only solve problems but also provide valuable insights.</p>
+
+                    <p>When I'm not coding, you can find me [your hobbies/interests].</p>
+
+                    
+
+                    <div class="skills">
+
+                        <h3 class="skills-title">Skills & Technologies</h3>
+
+                        <div class="
