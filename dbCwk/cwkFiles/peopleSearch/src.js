@@ -5,62 +5,65 @@ const supabaseUrl = 'https://lsgihxghcclaurdxaspt.supabase.co';
 const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxzZ2loeGdoY2NsYXVyZHhhc3B0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDQ4MTIzNTcsImV4cCI6MjA2MDM4ODM1N30.bdrNA24cKN0CaBiTvL2uOidstWL7-Dnkb3N1YW_J50I';
 const supabase = createClient(supabaseUrl, supabaseKey);
 
+function validateInputs() {
+    const name = document.getElementById('name').value.trim();
+    const license = document.getElementById('license').value.trim();
+    return (name && !license) || (!name && license);
+}
 
-function validateInputs(){
-    const name = document.getElementById('nameSearchEntry').value;
-    const license = document.getElementById('licenseNumSearchEntry').value;
-    return Boolean(name)!==Boolean(license); 
-} 
-
-function getSearchItem(){
-    const name = document.getElementById('nameSearchEntry').value;
-    if (Boolean(name)){
-        return name;
-    }
-
-    else{
-        return document.getElementById('licenseNumSearchEntry').value;
+function getSearchItem() {
+    const name = document.getElementById('name').value.trim();
+    if (name) {
+        return ['name', name];
+    } else {
+        return ['license', document.getElementById('license').value.trim()];
     }
 }
 
-searchButton.addEventListener('click',()=>{
-    if (validateInputs()){
-        getDatabase();
-    }
-    else{
-        console.log('Must have only 1 search argument');
-    }
-});
+function displaySearchError(message) {
+    document.getElementById('message').textContent = 'Error: ' + message;
+}
 
-function displayData(data){
+function displaySuccess(message) {
+    document.getElementById('message').textContent = message;
+}
+
+function searchByName(name, data) {
+    return data.filter(row => row.Name.toLowerCase().includes(name.toLowerCase()));
+}
+
+function searchByLicense(license, data) {
+    return data.filter(row => row.LicenseNumber.toLowerCase().includes(license.toLowerCase()));
+}
+
+function filterData(searchTup, data) {
+    if (searchTup[0] === 'name') {
+        return searchByName(searchTup[1], data);
+    } else if (searchTup[0] === 'license') {
+        return searchByLicense(searchTup[1], data);
+    } else {
+        displaySearchError('Wrong Search Input Type');
+        return [];
+    }
+}
+
+function displayData(data) {
     const ul = document.getElementById('resultsList');
-    ul.innerHTML = '';
-
     data.forEach(person => {
         const parentli = document.createElement('li');
         const childul = document.createElement('ul');
-        
-        Object.entries(person).forEach(([key,value])=>{
+        childul.classList.add('flex-container');
+        Object.entries(person).forEach(([_, value]) => {
             const childli = document.createElement('li');
             childli.textContent = `${value}`;
             childul.appendChild(childli);
         });
-    parentli.appendChild(childul); 
-    ul.appendChild(parentli);
+        parentli.appendChild(childul);
+        ul.appendChild(parentli);
     });
 }
 
 async function getDatabase() {
-    const data = await getDataRows(); 
-    if (data) {
-        //need to filter the database
-        displayData(data);
-
-    }
-}
-
-async function getDataRows(){
-
     const { data, error } = await supabase.from('People').select('*');
     if (error) {
         console.error('Error:', error);
@@ -70,5 +73,28 @@ async function getDataRows(){
     }
 }
 
+searchButton.addEventListener('click', async () => {
+    const ul = document.getElementById('resultsList');
+    ul.innerHTML = '';
+    document.getElementById('message').textContent = '';
 
-window.getDatabase = getDatabase;
+    if (validateInputs()) {
+        const data = await getDatabase();
+
+        if (data) {
+            const searchTup = getSearchItem();
+            const searchResults = filterData(searchTup, data);
+
+            if (searchResults.length !== 0) {
+                displayData(searchResults);
+                displaySuccess('Search successful');
+            } else {
+                displaySearchError('No result found');
+            }
+        } else {
+            displaySearchError('No result found');
+        }
+    } else {
+        displaySearchError('Must provide exactly one search input');
+    }
+});

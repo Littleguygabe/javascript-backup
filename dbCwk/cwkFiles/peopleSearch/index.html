@@ -14,7 +14,7 @@
 <body>
     <header>
         <h1>
-            Search for People
+            People Search
         </h1>
         <nav id="homePageNav">
             <ul class="navBar">
@@ -34,7 +34,7 @@
                 <h2>
                     Search For a Name:
                 </h2>
-                <input type="text" class="entryBox" id="nameSearchEntry">
+                <input type="text" class="entryBox" id="name">
             </div>
             <br>
             <div id="licenseSearch" class="searchElement">
@@ -42,18 +42,21 @@
                 <h2>
                     Search For a License Number:
                 </h2>
-                <input type="text" class="entryBox" id="licenseNumSearchEntry">
+                <input type="text" class="entryBox" id="license">
             </div>
 
         </div>
         <br>        
-        <div class="navBarBut" id="searchButton">Search the Database</div>
-    
+        <button id="searchButton">Submit</button>
+
         <br>
 
         <h2>Search Results</h2>
+        <div id="message">
+            
+        </div>
         <div id="results" class="flex-container">
-            <ul id="resultsList" class="flex-container">
+            <ul id="resultsList" >
 
             </ul>
         </div>

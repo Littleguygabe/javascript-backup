@@ -34,7 +34,7 @@ h2{
 }
 
 #results{
-    border: solid red 3px;
+    border: solid hsl(186, 25.1%, 41.4%)  3px;
     border-radius: 15px;
 }
 
