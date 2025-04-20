@@ -3,6 +3,11 @@ ul li{
     font-family: 'roboto',sans-serif;
 }
 
+.flex-container{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
 header h1 {
     display: flex;
     justify-content: center;
