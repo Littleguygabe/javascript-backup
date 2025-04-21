@@ -27,14 +27,55 @@ async function getMatches(){
     return data
 
 } 
+function displayResults(results){
+    const resultsUl = document.createElement('ul');
+    results.forEach(person => {
+        const parentli = document.createElement('li');
+        const childul = document.createElement('ul');
+        childul.classList.add('flex-container');
+        Object.entries(person).forEach(([_,value])=>{
+            const childli = document.createElement('li');
+            childli.textContent = `${value}`;
+            childul.appendChild(childli);
+        });
+
+        parentli.appendChild(childul);
+        resultsUl.appendChild(parentli);        
+
+    });
+
+    document.getElementById('owner-results').appendChild(resultsUl);
+
+}
+
+function generateNewOwnerForm(){
+    console.log('generating form to create new owner');
+
+    
+
+} 
+
+function createNewUserInit(){
+    const createUserButton = document.createElement('button');
+    createUserButton.id = 'createNewOwner';
+    createUserButton.textContent = 'New Owner';
+
+    createUserButton.addEventListener('click',()=>{
+        generateNewOwnerForm();
+    }); 
+    
+    document.getElementById('owner-results').appendChild(createUserButton);
+
+}
 
 checkOwnerBut.addEventListener('click',async ()=>{
     // check if owner exists
     const results = await getMatches();
-    if (results.length){    
-        console.log('need to display results');
+    document.getElementById('owner-results').innerHTML='';
+    if (results.length){
+        displayResults(results);
     }
     else{
-        console.log('need to create a new user')
+        createNewUserInit();
     }
 });
