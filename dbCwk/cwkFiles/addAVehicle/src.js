@@ -49,19 +49,168 @@ function displayResults(results){
 }
 
 function generateNewOwnerForm(){
-    console.log('generating form to create new owner');
-
+    const inputFieldsArr = [['name','name'],['address','home address'],['dob','date of birth'],['license','license number'],['expire','license expiry date']];
+    const formElement = document.getElementById('new-owner-form');
+    formElement.innerHTML = '';
     
+    for (const[inputField,label] of inputFieldsArr){
+        const newInputDiv = document.createElement('div');
+        newInputDiv.classList.add('flex-container');
+        newInputDiv.id = `${inputField}-input-div`;
 
+        const newInputLabel = document.createElement('p');
+        newInputLabel.textContent = label;
+
+        const newInput = document.createElement('input');
+        newInput.id = inputField;
+
+        newInputDiv.appendChild(newInputLabel);
+        newInputDiv.appendChild(newInput);
+
+        formElement.appendChild(newInputDiv);
+
+    }
+
+    const ownerMessage = document.createElement('p');
+    ownerMessage.id = 'message-owner';
+    formElement.appendChild(ownerMessage);
+}
+
+function createSubmitNewOwnerButton(){
+    const submitDataButton = document.createElement('button');
+    submitDataButton.id = 'addOwnerButton';
+    submitDataButton.textContent = 'Add Owner';
+
+    submitDataButton.addEventListener('click',()=>{
+        submitNewOwnerData();
+    });
+
+    document.getElementById('new-owner-form').appendChild(submitDataButton);
+}
+
+function displayNewOwnerMessage(message){
+    document.getElementById('message-owner').textContent = message;
+}
+
+function getArrayOfOwnerInputs(){
+    const inputFieldsArr = ['name','address','dob','license','expire'];
+    const inputsArr = [];
+
+    for (const inputField of inputFieldsArr){
+        const inputElement = document.getElementById(inputField);
+        const input = inputElement.value.trim();
+        inputsArr.push(input);
+    }
+
+    return inputsArr;
+
+}
+
+function arrToLower(arr){
+    const cleaned = arr.map(item =>
+        typeof item==='string' ? item.toLowerCase() : item
+    );
+
+    return cleaned;
+}
+
+function arraysEqual(a, b) {
+    if (a.length !== b.length) return false;
+    return a.every((val, index) => val === b[index]);
+}
+
+
+async function compareToCurrentOwners(inputs,data){
+    inputs = arrToLower(inputs);
+    
+    for (const record of data){
+        const values = Object.values(record);
+        const cleaned = arrToLower(values);
+        cleaned.shift();
+        
+        if (arraysEqual(inputs,cleaned)){
+            return false;
+        }
+    }
+
+    return true;
+    
+}
+
+async function checkNewOwnerInputs(){
+    const inputs = getArrayOfOwnerInputs();
+    for (const input of inputs){
+        if (input===''){
+            displayNewOwnerMessage('Error: All Information About the new Owner is Required');
+            return false;
+        }
+    }
+
+    // check there isnt a duplicate
+    const {data,events} = await supabase.from('People').select('*');
+   
+    if (await compareToCurrentOwners(inputs,data)){
+        displayNewOwnerMessage('Successfully Create new Owner');
+    }
+    else{
+        displayNewOwnerMessage('Error: Identical Record Already in Database');
+        return false;
+    }
+
+    return true;
+
+}
+
+function zip(a,b){
+    return a.map((value,index) => [value,b[index]]);
+}
+
+async function getNewOwnerId(){
+    const {data} = await supabase.from('People').select('PersonID');
+
+    const ids = data.map(row => Number(row.PersonID)); 
+    const maxVal = Math.max(...ids);
+
+    return (maxVal+1);
+}
+
+
+async function addNewOwnerToDb() {
+    let inputs = getArrayOfOwnerInputs();
+    const inputFieldsArr = ['PersonID', 'Name', 'Address', 'DOB', 'LicenseNumber', 'ExpiryDate'];
+
+    inputs.unshift(await getNewOwnerId()); // Fix unshift
+
+    const record = Object.fromEntries(zip(inputFieldsArr, inputs)); // Build record object
+    console.log(record);
+
+    const { data, error } = await supabase.from('People').insert([record]);
+}
+
+
+async function submitNewOwnerData(){
+    const inputValid = await checkNewOwnerInputs();
+    if (inputValid){
+        addNewOwnerToDb();
+    }
+
+    else{
+        console.log('invalid inputs');
+    }
+}
+
+function createNewOwner(){
+    generateNewOwnerForm();
+    createSubmitNewOwnerButton();
 } 
 
-function createNewUserInit(){
+function createNewOwnerInit(){
     const createUserButton = document.createElement('button');
     createUserButton.id = 'createNewOwner';
     createUserButton.textContent = 'New Owner';
 
     createUserButton.addEventListener('click',()=>{
-        generateNewOwnerForm();
+        createNewOwner();
     }); 
     
     document.getElementById('owner-results').appendChild(createUserButton);
@@ -76,6 +225,6 @@ checkOwnerBut.addEventListener('click',async ()=>{
         displayResults(results);
     }
     else{
-        createNewUserInit();
+        createNewOwnerInit();
     }
 });
