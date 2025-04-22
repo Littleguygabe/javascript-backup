@@ -26,7 +26,114 @@ async function getMatches(){
 
     return data
 
-} 
+}
+
+function getNewVehicleInputs(){
+    const attributes = ['rego','make','model','colour'];
+    const arrOfInputs = [];
+    for (const label of attributes){
+        const dataInput =  document.getElementById(label).value.trim();
+        arrOfInputs.push(dataInput);
+    }
+
+    return arrOfInputs;
+
+}
+
+function displayNewVehicleMessage(message){
+    const newVehicleMessage = document.getElementById('message-vehicle');
+    newVehicleMessage.textContent = message;
+}
+
+async function validateInput(inputs) {
+    displayNewVehicleMessage('');
+    for (const input of inputs) {
+        if (input === '') {
+            displayNewVehicleMessage('Error: All attributes must be filled in');
+            return false;
+        }
+    }
+
+    const rego = inputs[0];
+
+    const { data, error } = await supabase
+        .from('Vehicles')
+        .select('VehicleID')
+        .ilike('VehicleID', rego);
+
+    if (data.length > 0) {
+        displayNewVehicleMessage('Error: Vehicle already exists');
+        return false;
+    }
+
+    return true;
+}
+
+
+async function saveVehicleToDb(attributes,ownerID){
+    attributes.unshift(ownerID);
+    const attributeLabels = ['OwnerID','VehicleID','Make','Model','Colour'];
+    const record = Object.fromEntries(zip(attributeLabels, attributes));
+
+    console.log(record);
+
+    const { data, error } = await supabase.from('Vehicles').insert([record]);
+}
+
+async function saveVehicle(ownerID) {
+    const inputs = getNewVehicleInputs();
+    if (await validateInput(inputs)) {
+        await saveVehicleToDb(inputs, ownerID);
+        displayNewVehicleMessage('Successfully Entered a new Vehicle');
+    }
+}
+
+
+
+function selectOwner(owner){
+
+    document.getElementById('owner-results').innerHTML='';
+    const ownerID = owner.PersonID;
+    const formElement = document.getElementById('new-car-form');
+    const attributes = [['rego','Vehicle Registration'],['make','Vehicle Make'],['model','Vehicle Model'],['colour','Colour']]
+
+    for (const [inputField,label] of attributes){
+        const newInputDiv = document.createElement('div');
+        newInputDiv.classList.add('flex-container');
+        newInputDiv.id = `${inputField}-input-div`;
+
+        const newInputLabel = document.createElement('p');
+        newInputLabel.textContent = label;
+
+        const newInput = document.createElement('input');
+        newInput.id = inputField;
+
+        newInputDiv.appendChild(newInputLabel);
+        newInputDiv.appendChild(newInput);
+
+        formElement.appendChild(newInputDiv);
+    }
+
+    const vehicleMessage = document.createElement('p');
+    vehicleMessage.id = 'message-vehicle';
+    formElement.appendChild(vehicleMessage);
+
+    const createNewVehicleBut = document.createElement('button');
+    createNewVehicleBut.id = 'createNewVehicleBut';
+    createNewVehicleBut.textContent = 'Add vehicle';
+
+    createNewVehicleBut.addEventListener('click',()=>{
+        saveVehicle(ownerID);
+    });
+
+    formElement.appendChild(createNewVehicleBut);
+
+}
+
+
+
+
+
 function displayResults(results){
     const resultsUl = document.createElement('ul');
     results.forEach(person => {
@@ -39,7 +146,16 @@ function displayResults(results){
             childul.appendChild(childli);
         });
 
+        const selectButton = document.createElement('button');
+        selectButton.textContent = 'Select Owner';
+        selectButton.addEventListener('click',()=>{
+            selectOwner(person);
+        })
+        
+        parentli.classList.add('flex-container');
+
         parentli.appendChild(childul);
+        parentli.appendChild(selectButton);
         resultsUl.appendChild(parentli);        
 
     });
