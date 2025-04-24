@@ -14,31 +14,23 @@
         <h1>Vehicle Search</h1>
         <nav id="homePageNav">
             <ul class="navBar">
-                <li class="navBarBut" id="homePageNavBut">Home Page</li>
                 <li class="navBarBut" id="peopleNavBut">People Search</li>
                 <li class="navBarBut highlightCurrentPageBut" id="vehicleNavBut">Vehicle Search</li>
                 <li class="navBarBut" id="addVehicleNavBut">Add a Vehicle</li>
             </ul>
         </nav>
     </header>
+
     <main>
         <div class="flex-container">
-            <h2>
-                Enter Vehicle Registration:
-            </h2>
+            <label for="rego">Enter Vehicle Registration:</label>
             <input type="text" class="entryBox" id="rego">
             <button id="regoSearchButton">Submit</button>
         </div>
 
-        <h2>
-            Search Results
-        </h2>
-        <div id="message">
-            <!-- dynamically changes the msg based on js logic -->
-        </div>
-        <div id="results">
-            <!-- Dynamically adds results using js -->
-        </div>
-
+        <h2>Search Results</h2>
+        <div id="message"></div>
+        <div id="results"></div>
     </main>
-
+</body>
+</html>

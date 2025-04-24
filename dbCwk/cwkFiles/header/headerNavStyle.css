@@ -22,7 +22,7 @@ header h1 {
 }
 
 .navBarBut{
-    background-color: hsl(186, 25.1%, 41.4%);
+    background-color: hsl(182, 39.6%, 18.8%);
     color: rgb(255, 255, 255);
     padding: 10px 20px;
     border: none;
@@ -34,12 +34,12 @@ header h1 {
 
 .highlightCurrentPageBut{   
     background-color: white;
-    color: hsl(186, 25.1%, 41.4%);
-    outline: 3px solid hsl(186, 25.1%, 41.4%);
+    color: hsl(182, 39.6%, 18.8%);
+    outline: 3px solid hsl(182, 39.6%, 18.8%);
 }
 
 .navBarBut:hover {
     background-color: white;
-    color: hsl(186, 25.1%, 41.4%);
-    outline: 3px solid hsl(186, 25.1%, 41.4%);
+    color: hsl(182, 39.6%, 18.8%);
+    outline: 3px solid hsl(182, 39.6%, 18.8%);
 }

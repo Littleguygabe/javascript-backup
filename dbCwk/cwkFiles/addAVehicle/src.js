@@ -102,8 +102,10 @@ function selectOwner(owner){
         newInputDiv.classList.add('flex-container');
         newInputDiv.id = `${inputField}-input-div`;
 
-        const newInputLabel = document.createElement('p');
+        const newInputLabel = document.createElement('label');
+        newInputLabel.setAttribute('for', inputField);
         newInputLabel.textContent = label;
+ 
 
         const newInput = document.createElement('input');
         newInput.id = inputField;
@@ -174,7 +176,8 @@ function generateNewOwnerForm(){
         newInputDiv.classList.add('flex-container');
         newInputDiv.id = `${inputField}-input-div`;
 
-        const newInputLabel = document.createElement('p');
+        const newInputLabel = document.createElement('label');
+        newInputLabel.setAttribute('for', inputField);
         newInputLabel.textContent = label;
 
         const newInput = document.createElement('input');

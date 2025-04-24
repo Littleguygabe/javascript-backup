@@ -8,50 +8,31 @@
     <link rel="stylesheet" href="../header/headerNavStyle.css">
     <script src="src.js" type="module" defer></script>
     <link rel="stylesheet" href="style.css">
-
-
-
-
 </head>
 <body>
     <header>
-        <h1>
-            Add a Vehicle
-        </h1>
+        <h1>Add a Vehicle</h1>
         <nav id="homePageNav">
             <ul class="navBar">
-                <li class="navBarBut" id="homePageNavBut">Home Page</li>
                 <li class="navBarBut" id="peopleNavBut">People Search</li>
                 <li class="navBarBut" id="vehicleNavBut">Vehicle Search</li>
                 <li class="navBarBut highlightCurrentPageBut" id="addVehicleNavBut">Add a Vehicle</li>
-                
             </ul>
         </nav>
     </header>
     <main>
         <div class="flex-container" id="owner-section">
-            <h2>
-                Enter Owner Name:
-            </h2>
+            <label for="owner">Enter Owner Name:</label>
             <input type="text" id="owner">
-            <button type="button" id="checkOwnerBut" disabled>
-                Check Owner
-            </button>
-            <br>
+            <button type="button" id="checkOwnerBut" disabled>Check Owner</button>
         </div>
+
         <div id="owner-results">
-            <ul id="owner-results-list">
-    
-            </ul>
-        </div>
-        <div id="new-owner-form">
-            
-        </div>
-        <div id="new-car-form">
-
+            <ul id="owner-results-list"></ul>
         </div>
 
-
+        <div id="new-owner-form"></div>
+        <div id="new-car-form"></div>
     </main>
 </body>
 </html>
