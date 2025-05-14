@@ -47,9 +47,9 @@ function displayResults(data){
 
         Object.entries(vehicle).forEach(([key, value]) => {
             const fieldP = document.createElement('p');
-            fieldP.textContent = value;
+            fieldP.textContent = `${key}: ${value}`;
             vehicleDiv.appendChild(fieldP);
-            document.getElementById('message').textContent = 'Search Succseful';
+            document.getElementById('message').textContent = 'Search Successful';
         });
 
         resultsDiv.appendChild(vehicleDiv);

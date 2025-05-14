@@ -132,20 +132,15 @@ function selectOwner(owner){
 
 }
 
-
-
-
-
 function displayResults(results){
-    const resultsUl = document.createElement('ul');
+    const resultsDiv = document.getElementById('owner-results');
     results.forEach(person => {
-        const parentli = document.createElement('li');
-        const childul = document.createElement('ul');
-        childul.classList.add('flex-container');
-        Object.entries(person).forEach(([_,value])=>{
-            const childli = document.createElement('li');
-            childli.textContent = `${value}`;
-            childul.appendChild(childli);
+        const resultsInnerDiv = document.createElement('div');
+        Object.entries(person).forEach(([key,value])=>{
+            const newP = document.createElement('p');
+            newP.textContent = `${key} : ${value}`;
+            
+            resultsInnerDiv.appendChild(newP);
         });
 
         const selectButton = document.createElement('button');
@@ -153,16 +148,11 @@ function displayResults(results){
         selectButton.addEventListener('click',()=>{
             selectOwner(person);
         })
-        
-        parentli.classList.add('flex-container');
 
-        parentli.appendChild(childul);
-        parentli.appendChild(selectButton);
-        resultsUl.appendChild(parentli);        
+        resultsInnerDiv.appendChild(selectButton);
+        resultsDiv.appendChild(resultsInnerDiv);
 
     });
-
-    document.getElementById('owner-results').appendChild(resultsUl);
 
 }
 
@@ -269,7 +259,7 @@ async function checkNewOwnerInputs(){
     const {data,events} = await supabase.from('People').select('*');
    
     if (await compareToCurrentOwners(inputs,data)){
-        displayNewOwnerMessage('Successfully Create new Owner');
+        displayNewOwnerMessage('Successfully Created new Owner');
     }
     else{
         displayNewOwnerMessage('Error: Identical Record Already in Database');
@@ -338,12 +328,17 @@ function createNewOwnerInit(){
 
 checkOwnerBut.addEventListener('click',async ()=>{
     // check if owner exists
+
+    
+
     const results = await getMatches();
     document.getElementById('owner-results').innerHTML='';
+    document.getElementById('new-owner-form').innerHTML='';
+    document.getElementById('new-car-form').innerHTML='';
+
     if (results.length){
         displayResults(results);
+
     }
-    else{
-        createNewOwnerInit();
-    }
+    createNewOwnerInit();
 });

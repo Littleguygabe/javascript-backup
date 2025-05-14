@@ -47,21 +47,26 @@ function filterData(searchTup, data) {
     }
 }
 
-function displayData(data) {
-    const ul = document.getElementById('resultsList');
-    data.forEach(person => {
-        const parentli = document.createElement('li');
-        const childul = document.createElement('ul');
-        childul.classList.add('flex-container');
-        Object.entries(person).forEach(([_, value]) => {
-            const childli = document.createElement('li');
-            childli.textContent = `${value}`;
-            childul.appendChild(childli);
+
+// 
+function displayResults(results){
+    const resultsDiv = document.getElementById('results');
+    results.forEach(person => {
+        const resultsInnerDiv = document.createElement('div');
+        Object.entries(person).forEach(([key,value])=>{
+            const newP = document.createElement('p');
+            newP.textContent = `${key} : ${value}`;
+            
+            resultsInnerDiv.appendChild(newP);
         });
-        parentli.appendChild(childul);
-        ul.appendChild(parentli);
+
+        resultsDiv.appendChild(resultsInnerDiv);
     });
+
 }
+// 
+
+
 
 async function getDatabase() {
     const { data, error } = await supabase.from('People').select('*');
@@ -74,7 +79,7 @@ async function getDatabase() {
 }
 
 searchButton.addEventListener('click', async () => {
-    const ul = document.getElementById('resultsList');
+    const ul = document.getElementById('results');
     ul.innerHTML = '';
     document.getElementById('message').textContent = '';
 
@@ -86,7 +91,7 @@ searchButton.addEventListener('click', async () => {
             const searchResults = filterData(searchTup, data);
 
             if (searchResults.length !== 0) {
-                displayData(searchResults);
+                displayResults(searchResults);
                 displaySuccess('Search successful');
             } else {
                 displaySearchError('No result found');

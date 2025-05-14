@@ -5,32 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vehicle Search</title>
     <script src="../header/headerLogic.js" defer></script>
-    <link rel="stylesheet" href="../header/headerNavStyle.css">
     <script src="src.js" defer type="module"></script>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
 </head>
 <body>
-    <header>
-        <h1>Vehicle Search</h1>
-        <nav id="homePageNav">
-            <ul class="navBar">
-                <li class="navBarBut" id="peopleNavBut">People Search</li>
-                <li class="navBarBut highlightCurrentPageBut" id="vehicleNavBut">Vehicle Search</li>
-                <li class="navBarBut" id="addVehicleNavBut">Add a Vehicle</li>
-            </ul>
-        </nav>
-    </header>
+    <div id="container">
 
-    <main>
-        <div class="flex-container">
-            <label for="rego">Enter Vehicle Registration:</label>
-            <input type="text" class="entryBox" id="rego">
-            <button id="regoSearchButton">Submit</button>
-        </div>
+        <header>
+            <h1>Vehicle Search</h1>
+            <nav id="homePageNav">
+                <ul class="navBar">
+                    <li class="navBarBut" id="peopleNavBut">People Search</li>
+                    <li class="navBarBut highlightCurrentPageBut" id="vehicleNavBut">Vehicle Search</li>
+                    <li class="navBarBut" id="addVehicleNavBut">Add a Vehicle</li>
+                </ul>
+            </nav>
+        </header>
+        
+        <aside>
+            <p>
+                Insert appropriate image
+            </p>
+        </aside>
+        
+        <main>
+            <div class="flex-container">
+                <label for="rego">Enter Vehicle Registration:</label>
+                <input type="text" class="entryBox" id="rego">
+                <button id="regoSearchButton">Submit</button>
+            </div>
+            
+            <h2>Search Results</h2>
+            <div id="message"></div>
+            <div id="results"></div>
+        </main>
+        
+        <footer>
+            <p>
+                Designed by <strong>Gabriel Bridger - 20686810</strong>
+            </p>
+        </footer>
+    </div>
+        
 
-        <h2>Search Results</h2>
-        <div id="message"></div>
-        <div id="results"></div>
-    </main>
 </body>
 </html>
+

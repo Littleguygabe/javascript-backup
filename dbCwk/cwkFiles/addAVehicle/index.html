@@ -5,34 +5,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add A Vehicle</title>
     <script src="../header/headerLogic.js" defer></script>
-    <link rel="stylesheet" href="../header/headerNavStyle.css">
     <script src="src.js" type="module" defer></script>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
+
+
+
+
 </head>
 <body>
-    <header>
-        <h1>Add a Vehicle</h1>
-        <nav id="homePageNav">
-            <ul class="navBar">
-                <li class="navBarBut" id="peopleNavBut">People Search</li>
-                <li class="navBarBut" id="vehicleNavBut">Vehicle Search</li>
-                <li class="navBarBut highlightCurrentPageBut" id="addVehicleNavBut">Add a Vehicle</li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <div class="flex-container" id="owner-section">
-            <label for="owner">Enter Owner Name:</label>
-            <input type="text" id="owner">
-            <button type="button" id="checkOwnerBut" disabled>Check Owner</button>
-        </div>
+    <div id="container">
 
-        <div id="owner-results">
-            <ul id="owner-results-list"></ul>
-        </div>
+        <header>
+            <h1>Add a Vehicle</h1>
+            <nav id="homePageNav">
+                <ul class="navBar">
+                    <li class="navBarBut" id="peopleNavBut">People Search</li>
+                    <li class="navBarBut" id="vehicleNavBut">Vehicle Search</li>
+                    <li class="navBarBut highlightCurrentPageBut" id="addVehicleNavBut">Add a Vehicle</li>
+                </ul>
+            </nav>
+        </header>
+        
+        <aside>
+            <p>
+                insert appropriate image
+            </p>
+        </aside>
+        
+        <main>
+            <div class="flex-container" id="owner-section">
+                <label for="owner">Enter Owner Name:</label>
+                <input type="text" id="owner">
+                <button type="button" id="checkOwnerBut" disabled>Check Owner</button>
+            </div>
 
-        <div id="new-owner-form"></div>
-        <div id="new-car-form"></div>
-    </main>
+            <div id="owner-results">
+
+            </div>
+            
+            <div id="new-owner-form"></div>
+            <div id="new-car-form"></div>
+        </main>
+        
+        <footer>
+            <p>
+                Designed by <strong>Gabriel Bridger - 20686810</strong>
+            </p>
+        </footer>
+    </div>
+
 </body>
 </html>

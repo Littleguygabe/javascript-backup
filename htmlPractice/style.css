@@ -1,0 +1,13 @@
+.gridWrapper{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;    
+    grid-template-rows: 100px 100px 100px;
+    gap: 10px;
+}
+
+.gridWrapper > div{
+    padding: 10px 10px 10px 10px;
+    border:2px solid rgb(255, 68, 108);
+    background-color: rgb(255, 186, 215);
+    border-radius: 5px;
+}
