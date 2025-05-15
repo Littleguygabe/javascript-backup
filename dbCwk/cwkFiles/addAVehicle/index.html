@@ -19,32 +19,72 @@
             <h1>Add a Vehicle</h1>
             <nav id="homePageNav">
                 <ul class="navBar">
-                    <li class="navBarBut" id="peopleNavBut">People Search</li>
-                    <li class="navBarBut" id="vehicleNavBut">Vehicle Search</li>
-                    <li class="navBarBut highlightCurrentPageBut" id="addVehicleNavBut">Add a Vehicle</li>
+                    <li class="navBarBut" id="peopleNavBut"><a href="../peopleSearch/index.html"><h2>People Search</h2></a></li>
+                    <li class="navBarBut" id="vehicleNavBut"><a href="../vehicleSearch/index.html"><h2>Vehicle Search</h2></a></li>
+                    <li class="navBarBut" id="addVehicleNavBut"><h2>Add a Vehicle</h2></li>
                 </ul>
             </nav>
         </header>
         
         <aside>
-            <p>
-                insert appropriate image
-            </p>
+            <img src="../images/car-search.png" alt="A man reaching into his car">
         </aside>
         
         <main>
-            <div class="flex-container" id="owner-section">
-                <label for="owner">Enter Owner Name:</label>
-                <input type="text" id="owner">
-                <button type="button" id="checkOwnerBut" disabled>Check Owner</button>
-            </div>
+            <div id="vehicle-entry-section">
+                <h3>Enter Vehicle Details</h3>
+                <p id="message-vehicle"></p>
+                <p id="message"></p>
 
-            <div id="owner-results">
+                <div id="regoDiv">
+                    <label for="rego">registration: </label>
+                    <input type="text" id="rego">
+                </div>
+
+                <div id="makeDiv">
+                    <label for="make">make: </label>
+                    <input type="text" id="make">
+                </div>
+
+                <div id="modelDiv">
+                    <label for="model">model: </label>
+                    <input type="text" id="model">
+                </div>
+
+                <div id="colourDiv">
+                    <label for="colour">colour: </label>
+                    <input type="text" id="colour">
+                </div>
+
+                <div id="ownerDiv">
+                    <label for="owner">owner: </label>
+                    <input type="text" id="owner">
+                </div>
+
+
+                <button type="button" id="addVehicleBut" >Add vehicle</button>
+                <button type="button" id="checkOwner" disabled>Check owner</button>
+            </div>
+            <div id="addOwnerContainer">
+
+                <p id="message-owner">
+
+                </p>
+
+                <div id="owner-results">
+                </div>
+
+                <div id="newUserInputForm">
+                </div>
+
+                <div id="newOwnerButContainer">
+
+                </div>
 
             </div>
-            
-            <div id="new-owner-form"></div>
-            <div id="new-car-form"></div>
+                
+
+
         </main>
         
         <footer>

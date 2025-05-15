@@ -7,7 +7,7 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 
 function validateInputs() {
     const name = document.getElementById('name').value.trim();
-    const license = document.getElementById('license').value.trim();
+    const license = document.getElementById('rego').value.trim();
     return (name && !license) || (!name && license);
 }
 
@@ -16,7 +16,7 @@ function getSearchItem() {
     if (name) {
         return ['name', name];
     } else {
-        return ['license', document.getElementById('license').value.trim()];
+        return ['license', document.getElementById('rego').value.trim()];
     }
 }
 

@@ -49,7 +49,7 @@ function displayResults(data){
             const fieldP = document.createElement('p');
             fieldP.textContent = `${key}: ${value}`;
             vehicleDiv.appendChild(fieldP);
-            document.getElementById('message').textContent = 'Search Successful';
+            document.getElementById('message').textContent = 'Search successful';
         });
 
         resultsDiv.appendChild(vehicleDiv);
