@@ -267,7 +267,7 @@ checkOwnerBut.addEventListener('click',async()=>{
 
 async function addVehicleToDb(){
     if (ownerID===null){
-        displayVehicleMessage('No Owner Selected');
+        displayVehicleMessage('Error:No Owner Selected');
         createNewUser();
     }
 
